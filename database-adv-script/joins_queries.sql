@@ -45,3 +45,5 @@ SELECT
 FROM users u
 FULL OUTER JOIN bookings b ON u.user_id = b.user_id
 ORDER BY u.last_name, u.first_name, b.booking_date DESC;
+
+
