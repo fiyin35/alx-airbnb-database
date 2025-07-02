@@ -180,7 +180,7 @@ CREATE TABLE Review (
     review_id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     property_id CHAR(36) NOT NULL,
     user_id CHAR(36) NOT NULL,
-    booking_id CHAR(36) NULL, -- Link to specific booking (optional)
+    booking_id CHAR(36) NULL, -- Link to specific booking
     rating INTEGER NOT NULL,
     comment TEXT NOT NULL,
     is_visible BOOLEAN NOT NULL DEFAULT TRUE,
@@ -205,8 +205,8 @@ CREATE TABLE Message (
     message_id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     sender_id CHAR(36) NOT NULL,
     recipient_id CHAR(36) NOT NULL,
-    property_id CHAR(36) NULL, -- Optional: link to specific property discussion
-    booking_id CHAR(36) NULL, -- Optional: link to specific booking discussion
+    property_id CHAR(36) NULL, --  link to specific property discussion
+    booking_id CHAR(36) NULL, -- link to specific booking discussion
     subject VARCHAR(255) NULL,
     message_body TEXT NOT NULL,
     is_read BOOLEAN NOT NULL DEFAULT FALSE,
