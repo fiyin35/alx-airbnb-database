@@ -6,6 +6,13 @@
 -- ------------------------------------------------
 -- Booking table indexes
 -- ------------------------------------------------
+
+-- Analyze query performance before adding indexes
+EXPLAIN ANALYZE SELECT * FROM booking WHERE user_id = 12345;
+EXPLAIN ANALYZE SELECT * FROM booking WHERE property_id = 54321;
+EXPLAIN ANALYZE SELECT * FROM review WHERE property_id = 54321;
+EXPLAIN ANALYZE SELECT * FROM payment WHERE booking_id = 98765;
+
 -- 1. Quickly find bookings made by a specific user
 CREATE INDEX idx_booking_user ON Booking (user_id);
 
@@ -44,6 +51,8 @@ CREATE INDEX idx_property_location_active_price
 -- 9. Narrow down properties by type (optional look‑up)
 CREATE INDEX idx_property_type ON Property (type_id);
 
--- Optional: standalone price index if you often run
---           global price range scans without location
--- CREATE INDEX idx_property_price ON Property (pricepernight);
+-- Analyze query performance after adding indexes
+EXPLAIN ANALYZE SELECT * FROM booking WHERE user_id = 12345;
+EXPLAIN ANALYZE SELECT * FROM booking WHERE property_id = 54321;
+EXPLAIN ANALYZE SELECT * FROM review WHERE property_id = 54321;
+EXPLAIN ANALYZE SELECT * FROM payment WHERE booking_id = 98765;
